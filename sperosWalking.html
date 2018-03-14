@@ -3,47 +3,32 @@
     <head>
         <title>Speros Walking Algo</title>
         <script>
-            function speros(n, arr=[], i=0)
+            function speros(n, results, arr=[])
             {    
-                console.log("FUNCTION CALL!");
-                console.log(`n is ${n}, i is ${i}, arr is ${arr}`);
-           
                 if (n < 0){
                     console.log("Ivalid number. Cannot be negative.");
+                    return;
                 }
                 if(n == 1){
-                    console.log(`n == 1? ${n}`);
-                    console.log(arr);
                     arr.push("1");
-                    console.log(arr);
-                    return [arr];
+                    console.log(arr);//have our array
+                    results.push(arr);//grab it into a different array..
+                    return;
                 }
                 if(n == 0){
-                    arr.push("0");
-                    console.log(arr);
-                    return [arr];
-                }
-                
-                if(n > 0){                    
-                    console.log(`n > 1?  ${n}`);
-                
-                    console.log("+ 2 STEPS FORWARD");
-                    console.log(arr);
-                    var arr1=[];
-                    var arr1 = speros(n-2, arr.concat(["2"]), i+1);
-                    console.log(arr1);
-                
-                    console.log("+ 1 STEP FORWARD ");
-                    var arr2=[];
-                    var arr2 = speros(n-1, arr.concat(["1"]), i+1);
-                    console.log(arr2);
-                    arr.push(arr1);
-                    arr.push(arr2);
-                    console.log(arr);
-                }
-                return arr;
+                    //arr.push("0");
+                    console.log(arr);//have our array
+                    //results.push(arr);//grab it into a different array..
+                    return;
+                }                 
+                console.log("+ 2 STEPS FORWARD");
+                speros(n-2, results, arr.concat(["2"]));
+                console.log("+ 1 STEP FORWARD"); 
+                speros(n-1, results, arr.concat(["1"]));
             }
-            speros(4);
+            var results=[];
+            speros(5, results);
+            console.log(results);
         </script>
     </head>
 </html>
