@@ -14,7 +14,14 @@
                 if(n == 1){
                     console.log(`n == 1? ${n}`);
                     console.log(arr);
-                    return arr.push(1);
+                    arr.push("1");
+                    console.log(arr);
+                    return [arr];
+                }
+                if(n == 0){
+                    arr.push("0");
+                    console.log(arr);
+                    return [arr];
                 }
                 
                 if(n > 0){                    
@@ -22,12 +29,17 @@
                 
                     console.log("+ 2 STEPS FORWARD");
                     console.log(arr);
+                    var arr1=[];
                     var arr1 = speros(n-2, arr.concat(["2"]), i+1);
                     console.log(arr1);
                 
                     console.log("+ 1 STEP FORWARD ");
+                    var arr2=[];
                     var arr2 = speros(n-1, arr.concat(["1"]), i+1);
                     console.log(arr2);
+                    arr.push(arr1);
+                    arr.push(arr2);
+                    console.log(arr);
                 }
                 return arr;
             }
